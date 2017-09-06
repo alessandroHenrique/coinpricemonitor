@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third party
+    'channels',
+
     # Our Apps
     'dashboard',
 ]
@@ -123,6 +126,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Channel layer settings
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+            'capacity': 100,
+        },
+        'ROUTING': 'bitcoinmonitor.routing.channel_routing',
+    },
+}
 
 try:
     from .local_settings import * # noqa
