@@ -127,6 +127,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Channel layer settings
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+            'capacity': 100,
+        },
+        'ROUTING': 'bitcoinmonitor.routing.channel_routing',
+    },
+}
+
 try:
     from .local_settings import * # noqa
 except ImportError:
