@@ -140,6 +140,10 @@ CHANNEL_LAYERS = {
     },
 }
 
+# Celery settings
+
+CELERY_IMPORTS = ('dashboard.tasks',)
+
 try:
     from .local_settings import * # noqa
 except ImportError:
