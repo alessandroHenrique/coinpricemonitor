@@ -10,3 +10,8 @@ def ws_connect(message):
     message.reply_channel.send({
         'accept': True
     })
+
+
+@channel_session_user
+def ws_disconnect(message):
+    Group('btc-price').discard(message.reply_channel)
