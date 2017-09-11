@@ -1,0 +1,25 @@
+@font-face {
+    font-family: priceFont;
+    src: url(/static/fonts/DINPro.woff);
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  top: 38%;
+}
+
+.bitcoin-icon,
+.bitcoin-price {
+  vertical-align: middle;
+}
+
+.bitcoin-icon {
+  width: 80px;
+  margin-right: 20px;
+}
+
+.bitcoin-price {
+  font-family: priceFont;
+  font-size: 45px;
+}
