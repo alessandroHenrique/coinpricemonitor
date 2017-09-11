@@ -1,6 +1,16 @@
 {% load static %}
 
-<svg width="960" height="500"></svg>
+<head>
+  <link rel="stylesheet" href="{% static "css/main.css" %}">
+</head>
+
+<body>
+  <div class="container">
+    <img class="bitcoin-icon" src="{% static "images/bitcoin.png" %}" alt="">
+    <span class="bitcoin-price"></span>
+  </div>
+</body>
+
 
 <script type="text/javascript" src="{% static "vendors/d3.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/main.js" %}"></script>
