@@ -6,9 +6,9 @@ from django.conf import settings
 import os
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bitcoinmonitor.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'coinpricemonitor.settings')
 
-app = Celery('bitcoinmonitor', broker='redis://localhost:6379')
+app = Celery('coinpricemonitor', broker='redis://localhost:6379')
 
 app.conf.timezone = 'UTC'
 

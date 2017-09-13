@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'bitcoinmonitor.urls'
+ROOT_URLCONF = 'coinpricemonitor.urls'
 
 TEMPLATES = [
     {
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bitcoinmonitor.wsgi.application'
+WSGI_APPLICATION = 'coinpricemonitor.wsgi.application'
 
 
 # Database
@@ -136,7 +136,7 @@ CHANNEL_LAYERS = {
             'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
             'capacity': 100,
         },
-        'ROUTING': 'bitcoinmonitor.routing.channel_routing',
+        'ROUTING': 'coinpricemonitor.routing.channel_routing',
     },
 }
 
