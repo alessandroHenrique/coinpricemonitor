@@ -1,4 +1,4 @@
-# bitcoinmonitor
+# coinpricemonitor
 
 ## Project Setup
 
