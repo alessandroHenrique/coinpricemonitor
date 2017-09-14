@@ -10,16 +10,61 @@
 }
 
 .bitcoin-icon,
-.bitcoin-price {
+.bitcoin-price,
+.litecoin-icon,
+.litecoin-price {
   vertical-align: middle;
 }
 
-.bitcoin-icon {
+.bitcoin-icon,
+.litecoin-icon {
   width: 80px;
   margin-right: 20px;
 }
 
-.bitcoin-price {
+.bitcoin-price,
+.litecoin-price {
   font-family: priceFont;
   font-size: 45px;
+}
+
+.wrapper-litecoin {
+  display: none;
+}
+
+.action-button
+{
+	position: relative;
+	padding: 10px 40px;
+  margin: 0px 10px 10px 0px;
+	border-radius: 10px;
+	font-family: 'Pacifico', cursive;
+	font-size: 25px;
+	color: #FFF;
+	text-decoration: none;
+}
+
+.blue
+{
+	background-color: #3498DB;
+	border-bottom: 5px solid #2980B9;
+	text-shadow: 0px -2px #2980B9;
+}
+
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button:active
+{
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
+}
+
+.wrapper-button {
+  margin-top: 60px;
+  margin-left: 24px;
 }
