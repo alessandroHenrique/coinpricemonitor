@@ -1,27 +1,3 @@
-var wsUri = "ws://localhost:8000/ws/";
-var websocket;
-
-
-function setupWebSocket() {
-  websocket = new WebSocket(wsUri);
-  websocket.onopen = function(evt) { onOpen(evt) };
-  websocket.onmessage = function(evt) { onMessage(evt) };
-}
-
-function onOpen (evt) {
-  console.log("Connected to websocket!");
-}
-
-function onMessage (evt) {
-  var data = JSON.parse(evt.data);
-
-  if (data.BTC) {
-    $('.bitcoin-price')[0].innerHTML = ' $' + String(data.BTC);
-  } else {
-    $('.litecoin-price')[0].innerHTML = ' $' + String(data.LTC);
-  }
-}
-
 $(".change-coin-js").click(function (e) {
   if ($(".wrapper-bitcoin").css("display") == "none") {
     $(".wrapper-bitcoin").css("display", "block");
@@ -44,4 +20,94 @@ $(".change-coin-js").click(function (e) {
   }
 });
 
-window.addEventListener("load", setupWebSocket, false);
+anychart.onDocumentReady(function() {
+  // create data set on our data
+  var dataSet = anychart.data.set(getData(3000));
+
+  // map data for the first series, take x from the zero column and value from the first column of data set
+  var seriesData_1 = dataSet.mapAs({
+  x: [0],
+  value: [1]
+  });
+
+  // create line chart
+  chart = anychart.line();
+
+  // turn on chart animation
+  chart.animation(true);
+
+  // set chart padding
+  chart.padding([10, 20, 5, 20]);
+
+  // turn on the crosshair
+  chart.crosshair()
+  .enabled(true)
+  .yLabel(false)
+  .yStroke(null);
+
+  // set tooltip mode to point
+  chart.tooltip().positionMode('point');
+
+  // set chart title text settings
+  chart.title('Trend of Sales of the Most Popular Products of ACME Corp.');
+  chart.title().padding([0, 0, 5, 0]);
+
+  // set yAxis title
+  chart.yAxis().title('Number of Bottles Sold (thousands)');
+  chart.xAxis().labels().padding([5]);
+
+  // create first series with mapped data
+  var series_1 = chart.line(seriesData_1);
+  series_1.name('Brandy');
+  series_1.hoverMarkers()
+  .enabled(true)
+  .type('circle')
+  .size(4);
+  series_1.tooltip()
+  .position('right')
+  .anchor('left')
+  .offsetX(5)
+  .offsetY(5);
+
+  // turn the legend on
+  chart.legend()
+  .enabled(true)
+  .fontSize(13)
+  .padding([0, 0, 10, 0]);
+
+  // set container id for the chart and set up paddings
+  chart.container('container');
+
+  // initiate chart drawing
+  chart.draw();
+
+  var wsUri = "ws://localhost:8000/ws/";
+  var websocket;
+
+  function setupWebSocket() {
+    websocket = new WebSocket(wsUri);
+    websocket.onopen = function(evt) { onOpen(evt) };
+    websocket.onmessage = function(evt) { onMessage(evt) };
+  }
+
+  function onOpen (evt) {
+    console.log("Connected to websocket!");
+  }
+
+  function onMessage (evt) {
+    var data = JSON.parse(evt.data);
+    dataSet.data(getData(data));
+  }
+});
+
+function getData(data) {
+  var currentDate = new Date();
+  var formattedDate =
+      ("00" + currentDate.getHours()).slice(-2) + ":" +
+      ("00" + currentDate.getMinutes()).slice(-2) + ":" +
+      ("00" + currentDate.getSeconds()).slice(-2);
+
+  return [
+    [formattedDate, data],
+  ]
+}
