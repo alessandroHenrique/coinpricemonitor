@@ -21,8 +21,9 @@ $(".change-coin-js").click(function (e) {
 });
 
 anychart.onDocumentReady(function() {
+  const BTC_INITIAL_PRICE = 3000
   // create data set on our data
-  var dataSet = anychart.data.set(getData(3000));
+  var dataSet = anychart.data.set([getData(BTC_INITIAL_PRICE)]);
 
   // map data for the first series, take x from the zero column and value from the first column of data set
   var seriesData_1 = dataSet.mapAs({
@@ -95,8 +96,10 @@ anychart.onDocumentReady(function() {
   }
 
   function onMessage (evt) {
+    console.log('on message')
     var data = JSON.parse(evt.data);
-    dataSet.data(getData(data));
+    data = getData(data.BTC)
+    dataSet.append(data);
   }
 
   setupWebSocket();
@@ -109,7 +112,5 @@ function getData(data) {
       ("00" + currentDate.getMinutes()).slice(-2) + ":" +
       ("00" + currentDate.getSeconds()).slice(-2);
 
-  return [
-    [formattedDate, data],
-  ]
+  return [formattedDate, data]
 }
