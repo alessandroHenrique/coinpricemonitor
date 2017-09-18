@@ -97,7 +97,6 @@ anychart.onDocumentReady(function() {
   }
 
   function onMessage (evt) {
-    console.log('on message')
     var data = JSON.parse(evt.data);
     currentDate = getCurrentDate()
     dataSet.append([currentDate, data[coin_key]]);
