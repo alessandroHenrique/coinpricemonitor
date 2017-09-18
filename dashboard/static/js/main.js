@@ -98,6 +98,8 @@ anychart.onDocumentReady(function() {
     var data = JSON.parse(evt.data);
     dataSet.data(getData(data));
   }
+
+  setupWebSocket();
 });
 
 function getData(data) {
