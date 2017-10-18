@@ -111,7 +111,6 @@ function setupGraph() {
       .attr("height", height)
       .on("mouseover", function() { focus.style("display", null); })
       .on("mouseout", function() { focus.style("display", "none"); })
-      .on("mousemove", mousemove);
 }
 
 // *** Function for to draw the line graph ...
