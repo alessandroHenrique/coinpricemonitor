@@ -136,7 +136,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'asgi_redis.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+            'hosts': [os.environ.get('REDIS_URL', config('REDIS_URL', default='redis://localhost:6379'))],
             'capacity': 100,
         },
         'ROUTING': 'coinpricemonitor.routing.channel_routing',
