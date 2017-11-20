@@ -1,4 +1,7 @@
-var wsUri = "ws://localhost:8000/ws/";
+var wsaddr = window.location.host;
+var ws_scheme = window.location.protocol === "https:" ? "wss" : "ws";
+var path = window.location.pathname.replace(/\/$/, "");
+var wsUri = ws_scheme + "://" + wsaddr + path + "/ws/";
 var websocket;
 var dataLineGraph = [];
 var svg;
