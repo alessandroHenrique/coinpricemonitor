@@ -27,7 +27,7 @@ SECRET_KEY = '(0ejil(ukh-ynusf^$nfpjhn-6wp20&jxu=-=kt@f4+m(qn64m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = ['protected-forest-75949.herokuapp.com']
+ALLOWED_HOSTS = ['protected-forest-75949.herokuapp.com', 'coinpricemonitor.labcodes.com.br']
 
 
 # Application definition
