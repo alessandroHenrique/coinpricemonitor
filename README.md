@@ -2,7 +2,7 @@
 
 ## Project Setup
 
-Run the following commands:
+Run the following commands in the shell:
 ```
 pip install -r requirements.txt
 python manage.py migrate
